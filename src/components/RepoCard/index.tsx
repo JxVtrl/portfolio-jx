@@ -48,7 +48,7 @@ const RepoCard: React.FC<RepoCardProps> = ({
         <Flex>
           <Text fontWeight={800}>{title}</Text>
         </Flex>
-        <Flex>
+        <Flex direction='column'>
           <Text opacity={80} fontSize={14} lineHeight={"20px"}>
             {description}
           </Text>
