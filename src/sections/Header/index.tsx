@@ -5,7 +5,7 @@ import { useApp } from "../../context";
 // import { Container } from './styles';
 
 const Header: React.FC = () => {
-  const { user}: any = useApp();
+  const { user, username }: any = useApp();
   return (
     <Flex direction="column" justify="center" gap="24px">
       <Flex gap="24px">
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
           align="center"
           justify="center"
           borderRadius="50%"
-          overflow='hidden'
+          overflow="hidden"
         >
           <Image src={user?.avatar_url} />
         </Flex>
@@ -23,26 +23,34 @@ const Header: React.FC = () => {
           {[
             {
               id: 0,
-              text: "1",
-              emoji: "👨🏻‍💻",
+              text: "🧑🏻 " + user?.name,
             },
             {
               id: 1,
-              text: "2",
-              emoji: "👨🏻‍💻",
+              text: "🎂 22 Years old",
+            },
+            {
+              id: 2,
+              text: "🧑🏻‍💻 Front-end Developer",
+            },
+            {
+              id: 3,
+              text: "📔 Computer Engineering Student",
+            },
+            {
+              id: 4,
+              text: "🌴 in " + user?.location,
             },
           ].map((item, index) => (
             <Flex key={index}>
-              {item.emoji}
               <Text color="#d5ccff">{item.text}</Text>
             </Flex>
           ))}
         </Flex>
       </Flex>
       <Text color="#d5ccff">
-        I was fired everywhere so I've decided to always work for myself (even
-        Tai Lopez fired me). I love smiling & people who smile. I pursue
-        freedom.
+        {/* TODO: Transição entre bio do GH e personalizada */}
+        {user?.bio}
       </Text>
     </Flex>
   );

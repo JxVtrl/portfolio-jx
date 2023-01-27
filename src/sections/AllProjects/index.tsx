@@ -3,30 +3,30 @@ import React from "react";
 import { RepoCard } from "../../components";
 import { useApp } from "../../context";
 import { useDevice } from "../../hooks/useDevice";
-import { GithubRepo } from "../../interface/gh.interface";
 
-const FavoriteProjects: React.FC = () => {
-  const { favorites }: any = useApp();
+const AllProjects: React.FC = () => {
+  const { repos }: any = useApp();
   const { mobile } = useDevice();
+
   return (
-    <Flex gap="24px" direction="column">
-      {favorites && (
+    <Flex gap="24px" direction="column" >
+      {repos && (
         <>
           <Flex>
             <Text fontSize={"1.5rem"} color="#d5ccff">
-              Favorite Projects ({favorites.length})
+              All Projects ({repos.length})
             </Text>
           </Flex>
           <Grid
             templateColumns={mobile ? "repeat(1, 1fr)" : "repeat(2, 1fr)"}
             gap={6}
           >
-            {favorites.map((item: any, index: number) => {
+            {repos.map((item: any, index: number) => {
               return (
                 <GridItem key={index}>
                   <RepoCard
-                    link={item.link}
-                    title={item.repo}
+                    link={item.clone_url}
+                    title={item.name}
                     description={item.description}
                   />
                 </GridItem>
@@ -39,4 +39,4 @@ const FavoriteProjects: React.FC = () => {
   );
 };
 
-export default FavoriteProjects;
+export default AllProjects;

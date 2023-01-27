@@ -66,6 +66,7 @@ export function AppProvider({ children }: any) {
     repos,
     lastRepos,
     favorites,
+    username,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
