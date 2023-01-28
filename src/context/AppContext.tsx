@@ -27,6 +27,7 @@ export function AppProvider({ children }: any) {
 
   useEffect(() => {
     const getUserData = async () => {
+      console.log("getUserData");
       setLoading(true);
       const responseUser = await fetch(
         `https://api.github.com/users/${username}`
