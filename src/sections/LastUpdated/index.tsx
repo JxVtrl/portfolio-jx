@@ -21,7 +21,6 @@ const LastUpdated: React.FC = () => {
             gap={6}
           >
             {lastRepos.map((item: any, index: number) => {
-              console.log(item);
               return (
                 <GridItem key={index}>
                   <RepoCard

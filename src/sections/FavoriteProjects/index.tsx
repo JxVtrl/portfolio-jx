@@ -22,12 +22,19 @@ const FavoriteProjects: React.FC = () => {
             gap={6}
           >
             {favorites.map((item: any, index: number) => {
+              console.log(item);
               return (
                 <GridItem key={index}>
                   <RepoCard
                     link={item.link}
                     title={item.repo}
                     description={item.description}
+                    obs={
+                      {
+                        color: item.languageColor,
+                        text: item.language
+                      }
+                    }
                   />
                 </GridItem>
               );

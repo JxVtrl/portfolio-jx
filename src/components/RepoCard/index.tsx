@@ -1,4 +1,4 @@
-import { Flex, Link, Text } from "@chakra-ui/react";
+import { Flex, Link, Text, Box } from "@chakra-ui/react";
 import React from "react";
 import { useDevice } from "../../hooks/useDevice";
 
@@ -13,6 +13,7 @@ interface RepoCardProps {
     color: string;
   };
   obs?: {
+    color?: string;
     text: string;
   };
 }
@@ -35,6 +36,7 @@ const RepoCard: React.FC<RepoCardProps> = ({
         h={mobile ? "fit-content" : "128px"}
         color="#d5ccff"
         padding="16px"
+        gap="2px"
         transition="all 0.2s ease-in-out"
         _hover={{
           opacity: 0.8,
@@ -64,12 +66,21 @@ const RepoCard: React.FC<RepoCardProps> = ({
         <Flex>
           <Text fontWeight={800}>{title}</Text>
         </Flex>
-        <Flex direction="column">
+        <Flex direction="column" justify="space-between" h="100%">
           <Text opacity={80} fontSize={14} lineHeight={"20px"}>
             {description || "No description"}
           </Text>
           {obs && (
-            <Flex opacity={80}>
+            <Flex opacity={80} align="center">
+              {obs.color && (
+                <Box
+                  w="10px"
+                  h="10px"
+                  borderRadius="50%"
+                  bgColor={obs.color}
+                  mr="4px"
+                />
+              )}
               <Text>{obs.text}</Text>
             </Flex>
           )}
