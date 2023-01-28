@@ -10,6 +10,7 @@ interface RepoCardProps {
   description: string;
   stats?: {
     text: string;
+    color: string;
   };
   obs?: {
     text: string;
@@ -50,7 +51,7 @@ const RepoCard: React.FC<RepoCardProps> = ({
             pos="absolute"
           >
             <Flex
-              bgColor="#f5f57f"
+              bgColor={stats.color}
               borderRadius="12px"
               px="4px"
               left={0}

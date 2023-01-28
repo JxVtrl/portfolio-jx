@@ -30,6 +30,7 @@ const LastUpdated: React.FC = () => {
                     description={item.description}
                     stats={{
                       text: "🧑🏻‍💻 Building...",
+                      color: "#f5f57f",
                     }}
                   />
                 </GridItem>

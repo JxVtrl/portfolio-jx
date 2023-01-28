@@ -21,9 +21,15 @@ interface LoadMoreProps {
 const LoadMore: React.FC<LoadMoreProps> = ({ repos }) => {
   const { mobile } = useDevice();
   const [qtd, setQtd] = useState(6);
+  const [loading, setLoading] = useState(false);
 
   const handleMore = () => {
-    setQtd(qtd + 6);
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      setQtd(qtd + 6);
+    }, 1000);
   };
 
   return (
@@ -39,16 +45,20 @@ const LoadMore: React.FC<LoadMoreProps> = ({ repos }) => {
                 link={repo.link}
                 title={repo.name}
                 description={repo.description}
-                stats={repo.stats}
-                obs={repo.obs}
               />
             </GridItem>
           );
         })}
       </Grid>
       <Flex w="100%" justify="center">
-        <Text fontWeight={800} onClick={handleMore} cursor="pointer">
-          Load More
+        <Text
+          fontWeight={800}
+          onClick={() => {
+            if (!loading) handleMore();
+          }}
+          cursor={loading ? "default" : "pointer"}
+        >
+          {loading ? "Loading..." : "Load More"}
         </Text>
       </Flex>
     </>

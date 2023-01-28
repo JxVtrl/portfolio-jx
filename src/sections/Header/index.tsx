@@ -19,13 +19,13 @@ const Header: React.FC = () => {
               borderRadius="50%"
               overflow="hidden"
             >
-              <Image src={user?.avatar_url} />
+              <Image src={user.avatar_url} alt={user.name} />
             </Flex>
             <Flex direction="column">
               {[
                 {
                   id: 0,
-                  text: "🧑🏻 " + user?.name,
+                  text: "🧑🏻 " + user.name,
                 },
                 {
                   id: 1,
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
                 },
                 {
                   id: 4,
-                  text: "🌴 in " + user?.location,
+                  text: "🌴 in " + user.location,
                 },
               ].map((item, index) => (
                 <Flex key={index}>
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
           </Flex>
           <Text color="#d5ccff">
             {/* TODO: Transição entre bio do GH e personalizada */}
-            {user?.bio}
+            {user.bio}
           </Text>
         </>
       )}
