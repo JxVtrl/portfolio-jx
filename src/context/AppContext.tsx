@@ -16,6 +16,14 @@ export function AppProvider({ children }: any) {
   const [lastRepos, setLastRepos] = useState<GithubRepo[] | null>(null);
   const [favorites, setFavorites] = useState<GithubRepo[] | null>(null);
 
+  const handleOrderByDate = (repos: GithubRepo[]) => {
+    const orderedRepos = repos.sort(
+      (a: any, b: any) =>
+        Number(new Date(b.updated_at)) - Number(new Date(a.updated_at))
+    );
+    return orderedRepos;
+  };
+
   useEffect(() => {
     const getUserData = async () => {
       const responseUser = await fetch(
@@ -39,13 +47,8 @@ export function AppProvider({ children }: any) {
       const filteredRepos = repos.filter((repo: any) => !repo.fork);
       setRepos(filteredRepos);
 
-      // Order repos by last updated
-      const orderedRepos = filteredRepos.sort(
-        (a: any, b: any) => new Date(b.updated_at) - new Date(a.updated_at)
-      );
-
       // Filter only the last 10 repos
-      const lastRepos = orderedRepos.slice(0, 4);
+      const lastRepos = handleOrderByDate(filteredRepos).slice(0, 4);
       setLastRepos(lastRepos);
     };
 
