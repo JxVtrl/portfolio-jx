@@ -6,9 +6,11 @@ import FavoriteProjects from "./sections/FavoriteProjects";
 import AllProjects from "./sections/AllProjects";
 import Experiences from "./sections/Experiences";
 import LastUpdated from "./sections/LastUpdated";
+import { useApp } from "./context";
 
 function App() {
   const { mobile } = useDevice();
+  const { loading }: any = useApp();
   return (
     <Flex>
       <Flex
@@ -17,17 +19,23 @@ function App() {
         margin="0 auto"
         color="#e5e7eb"
       >
-        <Header />
-        <Divider my="16px" />
-        <Experiences />
-        <Divider my="16px" />
-        <FavoriteProjects />
-        <Divider my="16px" />
-        <LastUpdated />
-        <Divider my="16px" />
-        <AllProjects />
-        <Divider my="16px" />
-        <Extra />
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <>
+            <Header />
+            <Divider my="16px" />
+            <Experiences />
+            <Divider my="16px" />
+            <FavoriteProjects />
+            <Divider my="16px" />
+            <LastUpdated />
+            <Divider my="16px" />
+            <AllProjects />
+            <Divider my="16px" />
+            <Extra />
+          </>
+        )}
       </Flex>
     </Flex>
   );

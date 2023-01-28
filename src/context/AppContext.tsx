@@ -15,6 +15,7 @@ export function AppProvider({ children }: any) {
   const [repos, setRepos] = useState<GithubRepo[] | null>(null);
   const [lastRepos, setLastRepos] = useState<GithubRepo[] | null>(null);
   const [favorites, setFavorites] = useState<GithubRepo[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleOrderByDate = (repos: GithubRepo[]) => {
     const orderedRepos = repos.sort(
@@ -26,6 +27,7 @@ export function AppProvider({ children }: any) {
 
   useEffect(() => {
     const getUserData = async () => {
+      setLoading(true);
       const responseUser = await fetch(
         `https://api.github.com/users/${username}`
       );
@@ -50,6 +52,8 @@ export function AppProvider({ children }: any) {
       // Filter only the last 10 repos
       const lastRepos = handleOrderByDate(filteredRepos).slice(0, 4);
       setLastRepos(lastRepos);
+
+      setLoading(false);
     };
 
     return () => {
@@ -70,6 +74,7 @@ export function AppProvider({ children }: any) {
     lastRepos,
     favorites,
     username,
+    loading,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
