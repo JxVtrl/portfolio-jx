@@ -27,10 +27,14 @@ const LastUpdated: React.FC = () => {
                     link={item.link}
                     title={item.name}
                     description={item.description}
-                    stats={{
-                      text: "🧑🏻‍💻 Building...",
-                      color: "#f5f57f",
-                    }}
+                    stats={
+                      index === 0
+                        ? {
+                            text: "🧑🏻‍💻 Building...",
+                            color: "#f5f57f",
+                          }
+                        : undefined
+                    }
                   />
                 </GridItem>
               );

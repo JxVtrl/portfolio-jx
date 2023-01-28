@@ -22,7 +22,6 @@ const FavoriteProjects: React.FC = () => {
             gap={6}
           >
             {favorites.map((item: any, index: number) => {
-              console.log(item);
               return (
                 <GridItem key={index}>
                   <RepoCard

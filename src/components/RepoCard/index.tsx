@@ -55,11 +55,32 @@ const RepoCard: React.FC<RepoCardProps> = ({
             <Flex
               bgColor={stats.color}
               borderRadius="12px"
-              px="4px"
+              px="6px"
               left={0}
               maxW="fit-content"
             >
-              <Text>{stats.text}</Text>
+              {stats.text === "🧑🏻‍💻 Building..." ? (
+                <Text
+                  __css={{
+                    animation: "loading 1s linear infinite",
+                    "@keyframes loading": {
+                      "0%": {
+                        content: '"🧑🏻‍💻 Building..."',
+                      },
+                      "50%": {
+                        content: '"🧑🏻‍💻 Building...👨🏻‍💻"',
+                      },
+                      "100%": {
+                        content: '"🧑🏻‍💻 Building..."',
+                      },
+                    },
+                  }}
+                >
+                  {stats.text}
+                </Text>
+              ) : (
+                <Text>{stats.text}</Text>
+              )}
             </Flex>
           </Flex>
         )}

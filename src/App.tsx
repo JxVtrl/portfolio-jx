@@ -10,7 +10,7 @@ import { useApp } from "./context";
 
 function App() {
   const { mobile } = useDevice();
-  const { loading }: any = useApp();
+  const { loading, error }: any = useApp();
   return (
     <Flex>
       <Flex
@@ -19,7 +19,9 @@ function App() {
         margin="0 auto"
         color="#e5e7eb"
       >
-        {loading ? (
+        {error ? (
+          <h1>Error</h1>
+        ) : loading ? (
           <h1>Loading...</h1>
         ) : (
           <>
