@@ -45,7 +45,7 @@ export function AppProvider({ children }: any) {
       );
 
       // Filter only the last 10 repos
-      const lastRepos = orderedRepos.slice(0, 10);
+      const lastRepos = orderedRepos.slice(0, 4);
       setLastRepos(lastRepos);
     };
 

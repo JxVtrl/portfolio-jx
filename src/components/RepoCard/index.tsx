@@ -25,7 +25,7 @@ const RepoCard: React.FC<RepoCardProps> = ({
 }) => {
   const { mobile } = useDevice();
   return (
-    <Link  href={link} isExternal>
+    <Link href={link} isExternal>
       <Flex
         pos="relative"
         direction="column"
@@ -41,16 +41,31 @@ const RepoCard: React.FC<RepoCardProps> = ({
         }}
       >
         {stats && (
-          <Flex pos="absolute">
-            <Text>{stats.text}</Text>
+          <Flex
+            w="100%"
+            left={0}
+            right={0}
+            top={-3}
+            justify="center"
+            pos="absolute"
+          >
+            <Flex
+              bgColor="#f5f57f"
+              borderRadius="12px"
+              px="4px"
+              left={0}
+              maxW="fit-content"
+            >
+              <Text>{stats.text}</Text>
+            </Flex>
           </Flex>
         )}
         <Flex>
           <Text fontWeight={800}>{title}</Text>
         </Flex>
-        <Flex direction='column'>
+        <Flex direction="column">
           <Text opacity={80} fontSize={14} lineHeight={"20px"}>
-            {description}
+            {description || "No description"}
           </Text>
           {obs && (
             <Flex opacity={80}>

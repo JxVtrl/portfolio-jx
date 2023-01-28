@@ -5,6 +5,7 @@ import Header from "./sections/Header";
 import FavoriteProjects from "./sections/FavoriteProjects";
 import AllProjects from "./sections/AllProjects";
 import Experiences from "./sections/Experiences";
+import LastUpdated from "./sections/LastUpdated";
 
 function App() {
   const { mobile } = useDevice();
@@ -21,6 +22,8 @@ function App() {
         <Experiences />
         <Divider my="16px" />
         <FavoriteProjects />
+        <Divider my="16px" />
+        <LastUpdated />
         <Divider my="16px" />
         <AllProjects />
         <Divider my="16px" />
